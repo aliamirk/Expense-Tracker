@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className="bg-slate-800">{children}</body>
+      <body className="bg-slate-700">{children}</body>
     </html>
   )
 }
