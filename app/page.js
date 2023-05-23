@@ -1,5 +1,6 @@
 import ExpenseItem from "../components/Expenses/ExpenseItem";
 import Expenses from "../components/Expenses/Expenses";
+import NewExpense from "../components/NewExpense/NewExpense";
 import Wrapper from "../components/UI/Wrapper";
 
 export default function Home() {
@@ -26,8 +27,13 @@ export default function Home() {
   ];
 
   return (
-    <Wrapper>
-      <Expenses items={expenses} />
-    </Wrapper>
+    <>
+      <Wrapper>
+        <NewExpense />
+      </Wrapper>
+      <Wrapper>
+        <Expenses items={expenses} />
+      </Wrapper>
+    </>
   );
 }
