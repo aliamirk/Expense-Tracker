@@ -1,10 +1,27 @@
+"use client";
+
 import Wrapper from "../UI/Wrapper";
 import ExpenseForm from "./ExpenseForm";
 
-const NewExpense = () => {
+const NewExpense = (props) => {
+
+  const SaveExpenseDataHandler = (expense) => {
+
+    const Expense = {
+        ...expense,
+        id: Math.random().toString()
+    };
+    console.log("In NewExpense");
+    console.log(Expense);
+
+    // Forwarding data to Page.js 
+    props.onAddExpense(Expense)
+    
+  };
+
   return (
     <Wrapper>
-      <ExpenseForm />
+      <ExpenseForm onSaveExpenseData={SaveExpenseDataHandler} />
     </Wrapper>
   );
 };

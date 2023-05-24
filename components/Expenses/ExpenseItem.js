@@ -1,7 +1,6 @@
 import Wrapper from "../UI/Wrapper";
 import ExpenseDate from "./ExpenseDate";
 
-// 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
 
 function ExpenseItem(props) {
   

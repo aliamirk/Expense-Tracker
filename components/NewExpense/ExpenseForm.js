@@ -1,28 +1,82 @@
-const ExpenseForm = () => {
+"use client";
+
+import { useState } from "react";
+
+const ExpenseForm = (props) => {
+
+
+  const [enteredName, setEnteredName] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
+
+  const NameChangeHandler = (event) => {
+    setEnteredName(event.target.value);
+  };
+
+  const AmountChangeHandler = (event) => {
+    setEnteredAmount(event.target.value);
+  };
+
+  const DateChangeHandler = (event) => {
+    setEnteredDate(event.target.value);
+  };
+
+
+// Submit Handler
+
+  const SubmitHandler = (event) => {
+    // Preventing Reload
+    event.preventDefault();
+
+    // if (enteredAmount != "" && enteredDate != "" && enteredName != "") {}
+
+      const expense = {
+        title: enteredName,
+        amount: enteredAmount,
+        date: new Date(enteredDate),
+      };
+      
+    props.onSaveExpenseData(expense);
+    
+    setEnteredName("");
+    setEnteredAmount("");
+    setEnteredDate("");
+  };
+
   return (
     <div>
-      <form className="flex flex-col gap-8 font-semibold font-[22px] text-white">
-
+      <form
+        onSubmit={SubmitHandler}
+        className="flex flex-col gap-8 font-semibold font-[22px] "
+      >
         {/* First Row */}
 
         <div className="flex justify-evenly md:justify-between gap-4 ">
           <div className="">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name" className="text-white">
+              Name
+            </label>
             <input
-              className=" w-[150px] md:w-[300px] rounded-lg md:h-[34px] ml-4"
+              className=" w-[150px] md:w-[300px] rounded-lg md:h-[34px] p-2 ml-4"
               type="text"
               id="name"
+              onChange={NameChangeHandler}
+              value={enteredName}
             />
           </div>
 
           <div>
-            <label htmlFor="">Price</label>
+            <label htmlFor="price" className="text-white">
+              Price $
+            </label>
             <input
               type="number"
-              className="sm:[100px] md:w-[300px] w-[150px] rounded-lg md:h-[34px] ml-4"
+              className="sm:[100px] md:w-[300px] w-[150px] rounded-lg p-2 md:h-[34px] ml-4"
               id="price"
               min="0.1"
               step="0.1"
+              onChange={AmountChangeHandler}
+              value={enteredAmount}
             />
           </div>
         </div>
@@ -30,15 +84,18 @@ const ExpenseForm = () => {
         {/* First Row Ends\*/}
 
         {/* Second Row \*/}
-        
-        <div className="flex justify-evenly md:justify-between gap-4 ">
 
+        <div className="flex justify-evenly md:justify-between gap-4 ">
           <div className="">
-            <label htmlFor="date">Date</label>
+            <label htmlFor="date" className="text-white">
+              Date
+            </label>
             <input
-              className="w-[150px] sm:[100px] md:w-[300px] rounded-lg md:h-[34px] ml-6"
+              className="w-[150px] p-2 sm:[100px] md:w-[300px] rounded-lg md:h-[34px] ml-6"
               type="date"
               id="date"
+              onChange={DateChangeHandler}
+              value={enteredDate}
             />
           </div>
 
@@ -50,7 +107,6 @@ const ExpenseForm = () => {
         </div>
 
         {/* Second Row Ends\*/}
-
       </form>
     </div>
   );
