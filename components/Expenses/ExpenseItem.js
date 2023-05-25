@@ -5,7 +5,7 @@ import ExpenseDate from "./ExpenseDate";
 function ExpenseItem(props) {
   
   return (
-    // Container
+    // Parent Container 
 
     <div className="flex justify-between align-center shadow-md p-3 my-4 rounded-lg bg-gray-700">
       {/* Date */}
